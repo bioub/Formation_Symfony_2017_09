@@ -1,0 +1,11 @@
+# IDEs
+nbproject
+.idea
+
+# Composer
+vendor
+
+# Temp or OS
+.DS_STORE
+*.tmp
+~*
