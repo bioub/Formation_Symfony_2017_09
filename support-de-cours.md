@@ -5,16 +5,32 @@ Sommaire
 --------
 
 * Rappels sur PHP Objet
+
 * Composer, gestionnaire de dépendance PHP
+
 * Les frameworks PHP, positionnement de Symfony
+
 * Le modèle MVC, architecture de votre application
+
 * Installation et configuration de Symfony
+
 * Routeur et création de pages
+
 * Contrôleur, le chef d'orchestre de l'application
+
 * Manipuler les vues avec Twig
+
 * Doctrine, une abstraction pour vos bases de données
+
 * Formulaires : manipulation, filtre et validateurs
+
 * La sécurité sous Symfony
+
+  ​
+
+------
+
+
 
 PHP Objet
 ---------
@@ -145,8 +161,14 @@ class Societe
 	// getters/setters
 }
 ```
-	
+
 Dans Symfony (Doctrine) les associations sont nommées OneToOne, ManyToOne (la plus répandue), OneToMany (l'inverse de ManyToOne), ManyToMany.
+
+
+
+------
+
+
 
 Composer
 --------
@@ -222,6 +244,12 @@ Vérouille les versions installées pour éviter les mises à jours lors du pass
 
 `composer install` : va lire le fichier composer.lock et réinstaller les mêmes version exactement (limite le risque de bugs)
 
+
+
+------
+
+
+
 Frameworks web
 --------------
 
@@ -248,6 +276,11 @@ On peut les ranger en 3 catégories :
 Symfony lui est à la limite entre un Framework Entreprise et un Convention over configuration framework, facile à prendre en main et reste pourtant extrêmement personnalisable !
 
 
+
+------
+
+
+
 MVC : Modèle, Vue, Contrôleur
 ------------------------------
 
@@ -263,10 +296,28 @@ En anglais, Model View Controller ou MVC est un Design Pattern (réponse standar
 * Controller :
   * Chef d'orchestre (étant sur la page liste de contacts, je dois appeler la méthode findAll de VoitureMapper et transmettre le résultat à la vue index.phtml)
   * Gérer les problèmes HTTP (récupérer des paramètres dans l'URL, faire des redirections...)
-  
+
 ![image](img/386515.png)
-  
+
 [https://fr.wikipedia.org/wiki/Modèle-vue-contrôleur](https://fr.wikipedia.org/wiki/Modèle-vue-contrôleur)
+
+
+
+------
+
+
+
+## Symfony
+
+Un livre : https://symfony.com/pdf/Symfony_book_2.8.pdf
+
+Sa traduction (plus maintenue depuis fin 2016) : https://github.com/symfony-fr/symfony-docs-fr/tree/master/book
+
+
+
+------
+
+
 
 Symfony : Installation
 ----------------------
@@ -290,7 +341,7 @@ A la fin de l'installation, un script interactif nous propose d'éditer les para
 	mailer_user (null): 
 	mailer_password (null): 
 	secret (ThisTokenIsNotSoSecretChangeIt): 04eb46846cba76ae7edbe407ae812120ea1927d8
-	
+
 La clé `secret` est utilisée par les composants de sécurité de Symfony. Il faut qu'elle soit différente pour chaque application. Vous pouvez en générer une sur : [http://nux.net/secret](http://nux.net/secret)
 
 Attention : vérifier les droits de `var/session`, `var/logs`, `var/cache`. Cf le Symfony Book chapître *Setting up Permissions*
@@ -300,6 +351,12 @@ Attention : vérifier les droits de `var/session`, `var/logs`, `var/cache`. Cf l
 En ligne de commande : `php bin\symfony_requirements`
 
 Et en PHP Web en affichant la page config.php dans le navigateur.
+
+
+
+------
+
+
 
 Routeur : Créer de nouvelles pages
 -----------------------------------
@@ -327,62 +384,57 @@ Idéalement en ligne de commande :
 
 Exemple :
 
-	MBP-de-Romain:SFContacts romain$ php bin/console generate:controller
-	
-	                                                
-	  Welcome to the Symfony2 controller generator  
-	                                                
-	
-	
-	Every page, and even sections of a page, are rendered by a controller.
-	This command helps you generate them easily.
-	
-	First, you need to give the controller name you want to generate.
-	You must use the shortcut notation like AcmeBlogBundle:Post
-	
-	Controller name: AppBundle:Contact
-	
-	Determine the format to use for the routing.
-	
-	Routing format (php, xml, yml, annotation) [annotation]: 
-	
-	Determine the format to use for templating.
-	
-	Template format (twig, php) [twig]: 
-	
-	Instead of starting with a blank controller, you can add some actions now. An action
-	is a PHP function or method that executes, for example, when a given route is matched.
-	Actions should be suffixed by Action.
-	
-	
-	New action name (press <return> to stop adding actions): listAction
-	Action route [/list]: /contacts
-	Template name (optional) [AppBundle:Contact:list.html.twig]: 
-	
-	New action name (press <return> to stop adding actions): showAction
-	Action route [/show]: /contacts/{id}
-	Template name (optional) [AppBundle:Contact:show.html.twig]: 
-	
-	New action name (press <return> to stop adding actions): 
-	
-	                             
-	  Summary before generation  
-	                             
-	
-	You are going to generate a "AppBundle:Contact" controller
-	using the "annotation" format for the routing and the "twig" format
-	for templating
-	Do you confirm generation [yes]? 
-	
-	                         
-	  Controller generation  
-	                         
-	
-	Generating the bundle code: OK
-	
-	                                         
-	  Everything is OK! Now get to work :).  
-	                                         
+```
+MBP-de-Romain:SFContacts romain$ php bin/console generate:controller
+
+Welcome to the Symfony2 controller generator  
+
+Every page, and even sections of a page, are rendered by a controller.
+This command helps you generate them easily.
+
+First, you need to give the controller name you want to generate.
+You must use the shortcut notation like AcmeBlogBundle:Post
+
+Controller name: AppBundle:Contact
+
+Determine the format to use for the routing.
+
+Routing format (php, xml, yml, annotation) [annotation]: 
+
+Determine the format to use for templating.
+
+Template format (twig, php) [twig]: 
+
+Instead of starting with a blank controller, you can add some actions now. An action
+is a PHP function or method that executes, for example, when a given route is matched.
+Actions should be suffixed by Action.
+
+
+New action name (press <return> to stop adding actions): listAction
+Action route [/list]: /contacts
+Template name (optional) [AppBundle:Contact:list.html.twig]: 
+
+New action name (press <return> to stop adding actions): showAction
+Action route [/show]: /contacts/{id}
+Template name (optional) [AppBundle:Contact:show.html.twig]: 
+
+New action name (press <return> to stop adding actions): 
+
+Summary before generation  
+
+You are going to generate a "AppBundle:Contact" controller
+using the "annotation" format for the routing and the "twig" format
+for templating
+Do you confirm generation [yes]? 
+
+
+Controller generation  
+
+Generating the bundle code: OK
+
+Everything is OK! Now get to work :). 
+```
+
 ### Pour afficher les pages dans le navigateur
 
 Dans l'environnement de dev :
@@ -396,7 +448,7 @@ Dans l'environnement de prod :
 Ex :
 
 	http://localhost/SFContacts/web/app_dev.php/contacts
-	
+
 Pour obtenir des URLs plus proche de la prod (ex : `http://monsite.com/contacts`) il faut configurer Apache
 
 ### Modifier les Routes
@@ -405,7 +457,7 @@ Les routes sont définies sous la formes d'annotations (commentaires au dessus d
 
 On peut modifier les liens par exemple.
 
-Pour ajouter une contrainte sur un paramètre, on ajoute requirements (où [1-9][0-9]* est une expressions régulières qui limite id à des entiers positifs)ex :
+Pour ajouter une contrainte sur un paramètre, on ajoute requirements (où `[1-9][0-9]*` est une expression régulière qui limite `id` à des entiers positifs)ex :
 
 ```PHP
 /**
@@ -433,11 +485,16 @@ Pour prendre en compte les nouvelles pages il faut vider le cache.
 Vider le cache de dev :
 
 	php bin\console cache:clear
-	
+
 Vider le cache de prod :
-	
+
 	php bin\console cache:clear --env=prod
-	
+
+
+------
+
+
+
 Les vues avec Twig
 ------------------
 
@@ -447,12 +504,16 @@ Twig est un moteur de templates, permet de faire le rendu des vues sans utiliser
 
 Sans paramètre (app_contact_list étant le nom de la route):
 
-	<a href="{{ path('app_contact_list') }}">Retour à la liste</a>
-	
+```django
+<a href="{{ path('app_contact_list') }}">Retour à la liste</a>
+```
+
 Avec un paramètre ({id: 66}, remplace {id} dans l'URL par 66):
 
-	<a href="{{ path('app_contact_show', {id: 66}) }}">Afficher</a>
-	
+```django
+<a href="{{ path('app_contact_show', {id: 66}) }}">Afficher</a>
+```
+
 ### HTML commun à plusieurs pages
 
 Sur un site on a souvent le même HTML qui s'affiche sur plusieurs pages (balise head, menus, bandeaux...)
@@ -461,19 +522,31 @@ Au lieu de faire un `include 'header.php'` puis `include 'footer.php'` comme en 
 
 Pour faire ça il faut hériter d'un fichier de base (Layout) (ici :: veut dire le dossier views dans app/Resources/views):
 
-	{% extends "::base.html.twig" %}
-	
+```django
+{% extends "::base.html.twig" %}
+```
+
 Dans ce fichier on a définit des blocks :
 
-	{% block body %}{% endblock %}
-	
+```django
+{% block body %}{% endblock %}
+```
+
 Ces blocks peuvent être écrasés par une vue :
 
-		
-	{% block body %}
-	<h1>Welcome to the Societe:list page</h1>
-	{% endblock %}
-	
+
+```django
+{% block body %}
+<h1>Welcome to the Societe:list page</h1>
+{% endblock %}
+```
+
+
+
+------
+
+
+
 Le modèle avec Doctrine
 -----------------------
 
@@ -496,66 +569,65 @@ string traduit un string PHP en VARCHAR MySQL
 Pour les autres types voir :
 [http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html#doctrine-mapping-types](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html#doctrine-mapping-types)
 
-	php bin/console doctrine:generate:entity
-	
-	Welcome to the Doctrine2 entity generator  
-                                             
+```
+php bin/console doctrine:generate:entity
+
+Welcome to the Doctrine2 entity generator                                          
 
 
-	This command helps you generate Doctrine2 entities.
-	
-	First, you need to give the entity name you want to generate.
-	You must use the shortcut notation like AcmeBlogBundle:Post.
-	
-	The Entity shortcut name: AppBundle:Contact
-	
-	Determine the format to use for the mapping information.
-	
-	Configuration format (yml, xml, php, or annotation) [annotation]: 
-	
-	Instead of starting with a blank entity, you can add some fields now.
-	Note that the primary key will be added automatically (named id).
-	
-	Available types: array, simple_array, json_array, object, 
-	boolean, integer, smallint, bigint, string, text, datetime, datetimetz, 
-	date, time, decimal, float, binary, blob, guid.
-	
-	New field name (press <return> to stop adding fields): prenom
-	Field type [string]: 
-	Field length [255]: 40
-	Is nullable [false]: 
-	Unique [false]: 
-	
-	New field name (press <return> to stop adding fields): nom
-	Field type [string]: 
-	Field length [255]: 40
-	Is nullable [false]: 
-	Unique [false]: 
-	
-	New field name (press <return> to stop adding fields): email
-	Field type [string]: 
-	Field length [255]: 80
-	Is nullable [false]: true
-	Unique [false]: true
-	
-	New field name (press <return> to stop adding fields): telephone
-	Field type [string]: 
-	Field length [255]: 20
-	Is nullable [false]: true
-	Unique [false]: 
-	
-	New field name (press <return> to stop adding fields): 
-	
-	                     
-	  Entity generation  
-	                     
-	
-	> Generating entity class src/AppBundle/Entity/Contact.php: OK!
-	> Generating repository class src/AppBundle/Repository/ContactRepository.php: OK!
-	
-	                                         
-	  Everything is OK! Now get to work :).  
-                                         
+This command helps you generate Doctrine2 entities.
+
+First, you need to give the entity name you want to generate.
+You must use the shortcut notation like AcmeBlogBundle:Post.
+
+The Entity shortcut name: AppBundle:Contact
+
+Determine the format to use for the mapping information.
+
+Configuration format (yml, xml, php, or annotation) [annotation]: 
+
+Instead of starting with a blank entity, you can add some fields now.
+Note that the primary key will be added automatically (named id).
+
+Available types: array, simple_array, json_array, object, 
+boolean, integer, smallint, bigint, string, text, datetime, datetimetz, 
+date, time, decimal, float, binary, blob, guid.
+
+New field name (press <return> to stop adding fields): prenom
+Field type [string]: 
+Field length [255]: 40
+Is nullable [false]: 
+Unique [false]: 
+
+New field name (press <return> to stop adding fields): nom
+Field type [string]: 
+Field length [255]: 40
+Is nullable [false]: 
+Unique [false]: 
+
+New field name (press <return> to stop adding fields): email
+Field type [string]: 
+Field length [255]: 80
+Is nullable [false]: true
+Unique [false]: true
+
+New field name (press <return> to stop adding fields): telephone
+Field type [string]: 
+Field length [255]: 20
+Is nullable [false]: true
+Unique [false]: 
+
+New field name (press <return> to stop adding fields): 
+
+
+Entity generation  
+
+> Generating entity class src/AppBundle/Entity/Contact.php: OK!
+> Generating repository class src/AppBundle/Repository/ContactRepository.php: OK!
+
+
+Everything is OK! Now get to work :).  
+```
 
 ### Générer le code SQL
 
@@ -566,7 +638,7 @@ Afficher le code à exécuter :
 Exécuter les requêtes après vérification
 
 	php bin/console doctrine:schema:update --force
-	
+
 ### Modifier une entité
 
 Faites vos modifications dans le code et les annotations, ex:
@@ -583,13 +655,13 @@ private $categorie;
 Puis générer les Getters/Setters, peut se faire avec NetBeans mais le mieux est d'utiliser la commandes suivante (qui sait créer les add...) :
 
 	php bin/console doctrine:generate:entities AppBundle
-	
+
 Puis mettre à jour les tables avec les commandes :
 
 	php bin/console doctrine:schema:update --dump-sql
-	
+
 	php bin/console doctrine:schema:update --force
-	
+​	
 
 ## ParamConverter
 
@@ -606,7 +678,13 @@ public function showAction(\AppBundle\Entity\Actualite $actu)
     ));
 }
 ```
-	
+
+
+
+------
+
+
+
 Bundle : réutilisation de code
 ------------------------------
 
@@ -622,77 +700,76 @@ Idéalement quand un code (pages, fonctions, commandes...) peut être réutilis�
 
 ### Création d'un Bundle
 
-	php bin/console generate:bundle
-	
-	
-                                            
-	Welcome to the Symfony bundle generator!  
-	                                            
-	
-	Are you planning on sharing this bundle across multiple applications? [no]: yes
-	
-	Your application code must be written in bundles. This command helps
-	you generate them easily.
-	
-	Each bundle is hosted under a namespace (like Acme/BlogBundle).
-	The namespace should begin with a "vendor" name like your company name, your
-	project name, or your client name, followed by one or more optional category
-	sub-namespaces, and it should end with the bundle name itself
-	(which must have Bundle as a suffix).
-	
-	See http://symfony.com/doc/current/cookbook/bundles/best_practices.html#bundle-name for more
-	details on bundle naming conventions.
-	
-	Use / instead of \  for the namespace delimiter to avoid any problem.
-	
-	Bundle namespace: Prepavenir\BootstrapBundle
-	
-	In your code, a bundle is often referenced by its name. It can be the
-	concatenation of all namespace parts but it's really up to you to come
-	up with a unique name (a good practice is to start with the vendor name).
-	Based on the namespace, we suggest PrepavenirBootstrapBundle.
-	
-	Bundle name [PrepavenirBootstrapBundle]: 
-	
-	Bundles are usually generated into the src/ directory. Unless you're
-	doing something custom, hit enter to keep this default!
-	
-	Target Directory [src/]: 
-	
-	What format do you want to use for your generated configuration?
-	
-	Configuration format (annotation, yml, xml, php) [xml]: annotation
-	
-	                     
-	  Bundle generation  
-	                     
-	
-	> Generating a sample bundle skeleton into src/Prepavenir/BootstrapBundle OK!
-	> Checking that the bundle is autoloaded: OK
-	> Enabling the bundle inside app/AppKernel.php: OK
-	> Importing the bundle's routes from the app/config/routing.yml file: OK
-	
-	                                         
-	  Everything is OK! Now get to work :).  
-	                                         
-	
+```
+php bin/console generate:bundle
+
+Welcome to the Symfony bundle generator!  
+
+Are you planning on sharing this bundle across multiple applications? [no]: yes
+
+Your application code must be written in bundles. This command helps
+you generate them easily.
+
+Each bundle is hosted under a namespace (like Acme/BlogBundle).
+The namespace should begin with a "vendor" name like your company name, your
+project name, or your client name, followed by one or more optional category
+sub-namespaces, and it should end with the bundle name itself
+(which must have Bundle as a suffix).
+
+See http://symfony.com/doc/current/cookbook/bundles/best_practices.html#bundle-name for more
+details on bundle naming conventions.
+
+Use / instead of \  for the namespace delimiter to avoid any problem.
+
+Bundle namespace: Prepavenir\BootstrapBundle
+
+In your code, a bundle is often referenced by its name. It can be the
+concatenation of all namespace parts but it's really up to you to come
+up with a unique name (a good practice is to start with the vendor name).
+Based on the namespace, we suggest PrepavenirBootstrapBundle.
+
+Bundle name [PrepavenirBootstrapBundle]: 
+
+Bundles are usually generated into the src/ directory. Unless you're
+doing something custom, hit enter to keep this default!
+
+Target Directory [src/]: 
+
+What format do you want to use for your generated configuration?
+
+Configuration format (annotation, yml, xml, php) [xml]: annotation
+
+
+Bundle generation  
+
+> Generating a sample bundle skeleton into src/Prepavenir/BootstrapBundle OK!
+> Checking that the bundle is autoloaded: OK
+> Enabling the bundle inside app/AppKernel.php: OK
+> Importing the bundle's routes from the app/config/routing.yml file: OK
+
+
+Everything is OK! Now get to work :).  
+```
+
 ### Activer un bundle
 
 Il faut ajouter une ligne du genre :
 
 	new Prepavenir\BootstrapBundle\PrepavenirBootstrapBundle(),
-	
+
 Dans le fichier app/AppKernel.
 
 ### Activer les routes (pages) d'un bundle
 
 Dans le fichiers app/config/routing.yml (dans tous les environnements dev, prod...), ou dans app/config/routing_dev.yml (que dans l'environnement de dev).
 
-	prepavenir_bootstrap:
-	  resource: "@PrepavenirBootstrapBundle/Controller/"
-	  type:     annotation
-	  prefix:   /
-	  
+```yaml
+prepavenir_bootstrap:
+  resource: "@PrepavenirBootstrapBundle/Controller/"
+  type:     annotation
+  prefix:   /
+```
+
 ### Copier le dossier public d'un bundle ou créer un lien symbolique
 
 Dans un bundle on peut créer un dossier Resources/public qui contient des fichiers à placer dans web (ex: CSS, images, JavaScript), permet de limiter le nombre de manipulation de fichier à faire, ex: BootstrapBundle contient déjà les fichiers CSS.
@@ -700,7 +777,7 @@ Dans un bundle on peut créer un dossier Resources/public qui contient des fichi
 Pour copier les fichiers :
 
 	php bin/console assets:install
-	
+
 Ou créer des liens symboliques (raccourcis mais que sur Mac/Linux) :
 
 	php bin/console assets:install --symlink
@@ -746,7 +823,7 @@ public function addAction(\Symfony\Component\HttpFoundation\Request $request)
 ### Afficher le formulaire dans la vue
 
 
-```Twig
+```django
 {% extends "::base.html.twig" %}
 
 {% form_theme societeForm "bootstrap_3_layout.html.twig" %}
