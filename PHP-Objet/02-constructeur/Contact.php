@@ -4,7 +4,7 @@ class Contact {
     public $prenom;
     public $nom;
     
-    public function __construct($prenom, $nom) {
+    public function __construct($prenom = '', $nom = '') {
         $this->prenom = $prenom;
         $this->nom = $nom;
     }

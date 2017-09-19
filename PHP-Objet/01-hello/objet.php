@@ -15,4 +15,5 @@ class Contact {
 }
 
 $contact = new Contact;
+$contact->prenom = 'Thomas';
 echo $contact->hello();
