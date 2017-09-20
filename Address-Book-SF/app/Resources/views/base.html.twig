@@ -3,11 +3,29 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+        <link rel="stylesheet" 
+              href="{{ asset('bootstrap-4.0.0-beta/css/bootstrap.css') }}">
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand bg-dark mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('homepage') }}">Carnet d'adresses</a>
+            <ul class="navbar-nav mr-auto">
+                <li>
+                    <a class="nav-link" href="{{ path('app_contact_list') }}">Contacts</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ path('app_societe_list') }}">Sociétés</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+    {% block javascripts %}{% endblock %}
+</body>
 </html>

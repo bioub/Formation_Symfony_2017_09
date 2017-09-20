@@ -20,7 +20,7 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/bonjour/{prenom}")
+     * @Route("/bonjour/{prenom}", requirements={"prenom": "[A-Za-z-]+"})
      */
     public function helloAction($prenom) {
         $response = new \Symfony\Component\HttpFoundation\Response();

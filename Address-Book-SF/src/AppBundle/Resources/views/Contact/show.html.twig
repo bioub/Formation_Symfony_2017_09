@@ -1,10 +1,23 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Contact:show{% endblock %}
+{% block title %}{{ contact.prenom}} {{ contact.nom | upper }} - AddressBook{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Contact:show page</h1>
-<p>
-    Id : {{ id }}
-</p>
+<h1>{{ contact.prenom}} {{ contact.nom | upper }}</h1>
+<p>Prénom : {{ contact.prenom}}</p>
+<p>Nom : {{ contact.nom | upper }}</p>
+
+{% if contact.email %}
+<p>Email : {{ contact.email }}</p>
+{% endif %}
+
+{% if contact.telephone %}
+<p>Téléphone : {{ contact.telephone }}</p>
+{% endif %}
+
+
+{% if contact.dateNaissance %}
+    <p>Date de naissance : {{ contact.dateNaissance | date('d/m/Y')  }}</p>
+{% endif %}
+
 {% endblock %}

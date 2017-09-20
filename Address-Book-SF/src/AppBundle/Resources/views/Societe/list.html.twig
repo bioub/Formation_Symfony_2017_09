@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Liste des sociétés - AddressBook{% endblock %}
+
+{% block body %}
+<h1>Liste des sociétés</h1>
+<ul>
+    {% for s in societes %}
+    <li>
+        <a href="{{ path('app_societe_show', {id: s.id}) }}">{{s.nom}}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

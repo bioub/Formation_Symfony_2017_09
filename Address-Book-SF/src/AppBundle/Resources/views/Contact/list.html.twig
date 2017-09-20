@@ -1,7 +1,32 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Contact:list{% endblock %}
+{% block title %}Liste des contacts - AddressBook{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Contact:list page</h1>
+<h1>Liste des contacts</h1>
+<table class="table table-bordered">
+    <thead class="thead-default">
+        <tr>
+            <th>Nom complet</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in contacts %}
+        <tr>
+            <td>{{ c.prenom }} {{ c.nom }}</td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{{ path('app_contact_show', {id: c.id}) }}">Afficher</a>
+                <a class="btn btn-sm btn-warning" href="#">Modifier</a>
+                <a class="btn btn-sm btn-danger" href="#">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+        
+        <a class="btn btn-primary" 
+           href="{{ path('app_contact_add') }}">
+            Ajouter un contact
+        </a>
 {% endblock %}
