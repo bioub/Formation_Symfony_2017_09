@@ -1,7 +1,46 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Contact:add{% endblock %}
+{% block title %}Ajouter un contact - AddressBook{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Contact:add page</h1>
+<h1>Ajouter un contact</h1>
+
+{{ form_start(contactForm) }}
+    {{ form_row(contactForm.prenom) }}
+    <div>
+        <div>
+           {{ form_label(contactForm.nom) }}
+        </div>
+        <div>
+           {{ form_widget(contactForm.nom) }}
+        </div>
+        <div>
+            {{ form_errors(contactForm.nom) }}
+        </div>
+    </div>
+    {{ form_row(contactForm.email) }}
+    {{ form_row(contactForm.telephone) }}
+    {{ form_row(contactForm.dateNaissance) }}
+    {{ form_row(contactForm.societe) }}
+
+    <div>
+        <button class="btn btn-primary">Valider</button>
+    </div>
+    
+{{ form_end(contactForm) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {#
+    <style>
+        #appbundle_contact > div {
+            margin-bottom: 5px;
+        }
+        
+        #appbundle_contact > div > label {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+    #}
 {% endblock %}

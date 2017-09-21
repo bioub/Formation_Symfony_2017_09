@@ -36,10 +36,23 @@ class ContactController extends Controller
     /**
      * @Route("/add")
      */
-    public function addAction()
+    public function addAction(\Symfony\Component\HttpFoundation\Request $request)
     {
+        $form = $this->createForm(\AppBundle\Form\ContactType::class);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $contact = $form->getData();
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            
+            return $this->redirectToRoute('app_contact_list');
+        }
+        
         return $this->render('AppBundle:Contact:add.html.twig', array(
-            // ...
+            'contactForm' => $form->createView()
         ));
     }
 

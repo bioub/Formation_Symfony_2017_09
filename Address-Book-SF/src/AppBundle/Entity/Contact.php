@@ -15,7 +15,7 @@ class Contact
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,34 +24,39 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=40)
+     * @ORM\Column(type="string", length=40)
      */
     protected $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=40)
+     * @ORM\Column(type="string", length=40)
      */
     protected $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=80, nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=true)
      */
     protected $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     protected $telephone;
 
     /** @ORM\Column(name="date_naissance", type="date", nullable=true) */
     protected $dateNaissance;
     
+    /**
+     * @var Societe
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Societe")
+     */
+    protected $societe;
 
     /**
      * Get id
@@ -181,5 +186,29 @@ class Contact
     public function getDateNaissance()
     {
         return $this->dateNaissance;
+    }
+
+    /**
+     * Set societe
+     *
+     * @param \AppBundle\Entity\Societe $societe
+     *
+     * @return Contact
+     */
+    public function setSociete(\AppBundle\Entity\Societe $societe = null)
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
+
+    /**
+     * Get societe
+     *
+     * @return \AppBundle\Entity\Societe
+     */
+    public function getSociete()
+    {
+        return $this->societe;
     }
 }

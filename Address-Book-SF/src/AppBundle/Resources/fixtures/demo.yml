@@ -1,0 +1,21 @@
+AppBundle\Entity\Societe:
+    societe1:
+        nom: Apple
+        ville: Cupertino
+    societe2:
+        nom: Microsoft
+        ville: Seattle
+
+AppBundle\Entity\Contact:
+    contact1:
+        prenom: Bill
+        nom: Gates
+        email: bgates@microsoft.com
+        dateNaissance: <dateTimeBetween('-60 years', '-20 years')> 
+        societe: '@societe2'
+    contact2:
+        prenom: Steve
+        nom: Jobs
+        telephone: 1450458050
+        dateNaissance: <dateTimeBetween('-60 years', '-20 years')>
+        societe: '@societe1'

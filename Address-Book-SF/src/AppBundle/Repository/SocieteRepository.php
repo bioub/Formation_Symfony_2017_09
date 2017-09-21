@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class SocieteRepository extends \Doctrine\ORM\EntityRepository
 {
+    
 }

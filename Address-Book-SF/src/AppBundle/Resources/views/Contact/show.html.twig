@@ -20,4 +20,8 @@
     <p>Date de naissance : {{ contact.dateNaissance | date('d/m/Y')  }}</p>
 {% endif %}
 
+{% if contact.societe %}
+<p>Société : {{ contact.societe.nom }}</p>
+{% endif %}
+
 {% endblock %}
