@@ -5,4 +5,15 @@
 {% block body %}
 <h1>{{societe.nom}}</h1>
 <p>Ville : {{societe.ville}}</p>
+
+<p>Contacts :</p>
+<ul>
+    {% for c in societe.contacts %}
+    <li>
+        <a href="{{ path('app_contact_show', {id: c.id}) }}">
+            {{c.prenom}} {{c.nom}}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}

@@ -29,11 +29,6 @@ class CompteBancaire {
         return $this;
     }
 
-    public function setSolde($solde) {
-        $this->solde = $solde;
-        return $this;
-    }
-
     public function setType($type) {
         $this->type = $type;
         return $this;

@@ -1,0 +1,15 @@
+Objectif : créer 2 pages, une pour lister des sociétés,
+l'autre qui affiche le détail.
+
+Méthodologie : 
+1 / idéalement dessiner/maquetter vos pages
+2 / utiliser la ligne de commande pour créer :
+le contrôleur, les actions, les routes et vues
+3 / Editer les fichiers twigs (les vues), et les remplir
+avec du faux-texte (HTML/CSS)
+4 / utiliser la ligne de commande qui créé l'entité
+avec le mapping annotation
+5 / utiliser la ligne de commande qui affiche la requete
+de création puis génère les tables
+6 / remplir la table avec des exemples de société
+7 / ajouter le code dans le contrôleur puis les vues

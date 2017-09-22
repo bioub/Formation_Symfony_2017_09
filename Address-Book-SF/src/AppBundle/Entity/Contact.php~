@@ -54,7 +54,7 @@ class Contact
     
     /**
      * @var Societe
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Societe")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Societe", inversedBy="contacts")
      */
     protected $societe;
 
@@ -186,5 +186,29 @@ class Contact
     public function getDateNaissance()
     {
         return $this->dateNaissance;
+    }
+
+    /**
+     * Set societe
+     *
+     * @param \AppBundle\Entity\Societe $societe
+     *
+     * @return Contact
+     */
+    public function setSociete(\AppBundle\Entity\Societe $societe = null)
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
+
+    /**
+     * Get societe
+     *
+     * @return \AppBundle\Entity\Societe
+     */
+    public function getSociete()
+    {
+        return $this->societe;
     }
 }
